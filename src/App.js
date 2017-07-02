@@ -23,17 +23,97 @@ class App extends Component {
         this.state = {};
         //hard-coded topics by default, for dev and demo purposes
         //simulates retrieval from database
-        this.topics = [{
-            title: 'Welcome to Carouit!',
-            upvotes: 12,
-            posted_date: moment('20170307')
-        },
+        this.topics = [
+            {
+                title: 'Welcome to Carouit!',
+                upvotes: 12,
+                posted_date: moment('20170307')
+            },
             {
                 title: 'Here\'s a little tip to help you get started',
                 upvotes: 9,
                 posted_date: moment('20170307')
-            }
-
+            },
+            {
+                title: '1',
+                upvotes: 1,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '2',
+                upvotes: 2,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '3',
+                upvotes: 3,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '4',
+                upvotes: 4,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '5',
+                upvotes: 5,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '6',
+                upvotes: 6,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '7',
+                upvotes: 7,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '8',
+                upvotes: 8,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '9',
+                upvotes: 9,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '10',
+                upvotes: 10,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '11',
+                upvotes: 11,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '12',
+                upvotes: 12,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '13',
+                upvotes: 13,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '14',
+                upvotes: 14,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '15',
+                upvotes: 15,
+                posted_date: moment('20170307')
+            },
+            {
+                title: '16',
+                upvotes: 16,
+                posted_date: moment('20170307')
+            },
         ]
 
     }
