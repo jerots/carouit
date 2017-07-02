@@ -7,23 +7,20 @@ class Topic extends Component {
     constructor(props){
         super(props)
 
-
-
-
     }
 
     render() {
 
-        var topic = this.props.topic;
+        let topic = this.props.topic;
 
         return (
-            <div className="row row-topic" key={topic.title + topic.posted_date}>
+            <div className="row row-topic">
                 <div className="col-xs-12">
                     <div className="row">
                         <div className="col-xs-12">[{topic.posted_date.format('DD/MM/YY')}] </div>
                         <div className="col-xs-12 topic-title">{topic.title} </div>
                         <div className="col-xs-12">
-                            <span className="glyphicon glyphicon-arrow-up vote-arrow"/> {topic.upvotes} <span className="glyphicon glyphicon-arrow-down vote-arrow"/></div>
+                            <span className="glyphicon glyphicon-arrow-up vote-arrow" onClick={this.props.submitVote.bind(this, topic, 1)}/> {topic.upvotes} <span className="glyphicon glyphicon-arrow-down vote-arrow" onClick={this.props.submitVote.bind(this, topic, -1)} /></div>
                     </div>
                 </div>
             </div>

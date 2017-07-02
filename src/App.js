@@ -35,11 +35,25 @@ class App extends Component {
         this.loadTopics()
     }
 
+    submitVote(topic, adjustment){
+        let topics = this.topics;
+
+        let memory_topic = topics[topic.index];
+        memory_topic.upvotes += adjustment;
+
+        this.loadTopics();
+
+    }
+
     loadTopics() {
 
         let topics = this.topics;
 
         //TO-DO: filter by top 20 topics (sorted by upvotes, descending)
+
+        topics.forEach(function(topic, index){
+            topic['index'] = index;
+        });
 
 
         this.setState({topics: topics})
@@ -57,11 +71,11 @@ class App extends Component {
 
                 return (
 
-                    <Topic topic={topic} />
+                    <Topic topic={topic} submitVote={this.submitVote.bind(this)} key={topic.title+topic.posted_date}/>
 
                 )
 
-            });
+            }.bind(this));
         }
 
 
