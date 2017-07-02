@@ -13,3 +13,26 @@ body {
   background-color: #f2f2f2;
 
 }
+
+.row-buttons{
+  margin:5px;
+}
+
+.row-topic {
+
+  width:100%;
+  height:100px;
+  padding-top: 10px;
+  border: 1px solid #e1e1e1;
+
+}
+
+.topic-title {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.vote-arrow{
+  cursor: pointer;
+  color: #7b0c0c;
+}

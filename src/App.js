@@ -5,6 +5,7 @@ import moment from 'moment';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 import Banner from './ReusableComponents/Banner.js'
+import Topic from './ReusableComponents/Topic.js'
 
 class App extends Component {
 
@@ -40,6 +41,7 @@ class App extends Component {
 
         //TO-DO: filter by top 20 topics (sorted by upvotes, descending)
 
+
         this.setState({topics: topics})
 
     }
@@ -55,11 +57,7 @@ class App extends Component {
 
                 return (
 
-                    <div className="row row-topic" key={topic.title + topic.posted_date}>
-                        <div className="col-xs-12">
-                            {topic.title}
-                        </div>
-                    </div>
+                    <Topic topic={topic} />
 
                 )
 
