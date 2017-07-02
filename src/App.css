@@ -36,3 +36,7 @@ body {
   cursor: pointer;
   color: #7b0c0c;
 }
+
+.modal-custom{
+  padding: 20px 30px 40px 30px;
+}

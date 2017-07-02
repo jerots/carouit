@@ -1,11 +1,18 @@
+//Main
 import React, {Component} from 'react';
-import logo from './logo.svg';
+
+//Styles
 import './App.css';
-import moment from 'moment';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
+//Libraries
+import moment from 'moment';
+import { ModalManager} from 'react-dynamic-modal';
+
+//Components
 import Banner from './ReusableComponents/Banner.js'
 import Topic from './ReusableComponents/Topic.js'
+import TopicModal from './ReusableComponents/TopicModal.js'
 
 class App extends Component {
 
@@ -41,6 +48,7 @@ class App extends Component {
         let memory_topic = topics[topic.index];
         memory_topic.upvotes += adjustment;
 
+        //load topic after making changes to topics array in memory
         this.loadTopics();
 
     }
@@ -51,6 +59,7 @@ class App extends Component {
 
         //TO-DO: filter by top 20 topics (sorted by upvotes, descending)
 
+        //add each topic's index from the topics array in memory, so that the topics can be referenced later for upvoting/downvoting
         topics.forEach(function(topic, index){
             topic['index'] = index;
         });
@@ -60,12 +69,34 @@ class App extends Component {
 
     }
 
+    //Copied from https://github.com/xue2han/react-dynamic-modal
+    openModal(){
+        ModalManager.open(<TopicModal pushNewTopic={this.pushNewTopic.bind(this)}/>);
+    }
+
+    pushNewTopic(title){
+
+        let topics = this.topics;
+
+        topics.push({
+            title: title,
+            upvotes: 0,
+            posted_date: moment()
+        });
+
+        this.loadTopics();
+
+    }
+
 
     render() {
         let topics = this.state.topics;
 
+        //If topics is not done loading, show loading
         let topics_print = 'loading';
 
+
+        //if topics has been loaded, display them
         if (topics !== undefined) {
             topics_print = topics.map(function (topic) {
 
@@ -80,16 +111,20 @@ class App extends Component {
 
 
         return (
+
+
             <div className="container">
                 <Banner/>
                 <div className="row row-buttons">
                     <div className="col-xs-12">
-                        <button className="btn btn-danger">New Topic</button>
+                        <button className="btn btn-danger" onClick={this.openModal.bind(this)}>New Topic</button>
                     </div>
                 </div>
                 <div className="container-topic">
                     {topics_print}
                 </div>
+
+
             </div>
         );
     }

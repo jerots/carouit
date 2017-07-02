@@ -4,11 +4,6 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 
 class Topic extends Component {
 
-    constructor(props){
-        super(props)
-
-    }
-
     render() {
 
         let topic = this.props.topic;
