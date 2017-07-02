@@ -75,6 +75,7 @@ class App extends Component {
             return date_comparison;
         });
 
+
         filtered_topics = filtered_topics.slice(0, 20);
 
         //add each topic's index from the topics array in memory, so that the topics can be referenced later for upvoting/downvoting
