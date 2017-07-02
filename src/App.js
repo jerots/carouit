@@ -7,7 +7,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 //Libraries
 import moment from 'moment';
-import { ModalManager} from 'react-dynamic-modal';
+import {ModalManager} from 'react-dynamic-modal';
 
 //Components
 import Banner from './ReusableComponents/Banner.js'
@@ -42,7 +42,8 @@ class App extends Component {
         this.loadTopics()
     }
 
-    submitVote(topic, adjustment){
+    //Adjusts votes and reload topics afterwards. Can work with both upvote and downvotes
+    submitVote(topic, adjustment) {
         let topics = this.topics;
 
         let memory_topic = topics[topic.index];
@@ -53,28 +54,47 @@ class App extends Component {
 
     }
 
+    //load topics from memory, sort them by upvotes descending, limits it to top 20, and sets to state.
     loadTopics() {
 
         let topics = this.topics;
 
         //TO-DO: filter by top 20 topics (sorted by upvotes, descending)
+        let filtered_topics = topics.slice();
+
+        filtered_topics.sort(function (a, b) {
+
+            //Sort by upvotes descending
+            let vote_comparison = b.upvotes - a.upvotes;
+            if (vote_comparison !== 0) {
+                return vote_comparison;
+            }
+
+            //If upvotes are the same, sort by dates descending
+            let date_comparison = b.posted_date.unix() - a.posted_date.unix();
+            return date_comparison;
+        });
+
+        filtered_topics = filtered_topics.slice(0, 20);
 
         //add each topic's index from the topics array in memory, so that the topics can be referenced later for upvoting/downvoting
-        topics.forEach(function(topic, index){
+        topics.forEach(function (topic, index) {
             topic['index'] = index;
         });
 
 
-        this.setState({topics: topics})
+        this.setState({topics: filtered_topics})
 
     }
 
     //Copied from https://github.com/xue2han/react-dynamic-modal
-    openModal(){
+    // opens New Topic modal
+    openModal() {
         ModalManager.open(<TopicModal pushNewTopic={this.pushNewTopic.bind(this)}/>);
     }
 
-    pushNewTopic(title){
+    //Push new topic with 'title' as parameter.
+    pushNewTopic(title) {
 
         let topics = this.topics;
 
@@ -102,7 +122,7 @@ class App extends Component {
 
                 return (
 
-                    <Topic topic={topic} submitVote={this.submitVote.bind(this)} key={topic.title+topic.posted_date}/>
+                    <Topic topic={topic} submitVote={this.submitVote.bind(this)} key={topic.title + topic.posted_date}/>
 
                 )
 
@@ -111,8 +131,6 @@ class App extends Component {
 
 
         return (
-
-
             <div className="container">
                 <Banner/>
                 <div className="row row-buttons">

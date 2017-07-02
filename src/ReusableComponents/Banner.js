@@ -3,8 +3,6 @@ import '../App.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css'
 
 class Banner extends Component {
-
-
   render() {
     return (
           <div className="row banner">

@@ -7,12 +7,11 @@ class TopicModal extends Component {
 
     constructor(props){
         super(props);
-
         this.state = {title: ''};
-
     }
 
 
+    //change handler for input field. validates that length does not exceed 255
     changeHandler(e){
         let value = e.target.value;
         if (value.length < 255){
@@ -20,8 +19,8 @@ class TopicModal extends Component {
         }
     }
 
+    //Call parent's pushNewTopic function to add to topic array in memory
     submitNewTopic(){
-
         this.props.pushNewTopic(this.state.title);
         ModalManager.close();
     }
