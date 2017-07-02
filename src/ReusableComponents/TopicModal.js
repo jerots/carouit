@@ -21,6 +21,11 @@ class TopicModal extends Component {
 
     //Call parent's pushNewTopic function to add to topic array in memory
     submitNewTopic(){
+        if (this.state.title.trim().length === 0){
+            return;
+        }
+
+
         this.props.pushNewTopic(this.state.title);
         ModalManager.close();
     }
