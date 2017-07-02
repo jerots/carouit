@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
+import Banner from './ReusableComponents/Banner.js'
+
 class App extends Component {
 
     constructor(props){
@@ -17,11 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-          <div className="row banner">
-              <div className="col-xs-12">
-                  <span style={{color:'#c72121'}}>carou</span>it <span className="glyphicon glyphicon-comment" style={{color:'#c72121'}}/>
-              </div>
-          </div>
+          <Banner/>
           <div className="row">
               <div className="col-xs-12">
                   CONTENT HERE
