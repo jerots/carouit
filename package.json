@@ -1,6 +1,9 @@
 {
   "name": "carouit",
   "version": "0.1.0",
+  "engines": {
+    "node": "6.10.2"
+  },
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
